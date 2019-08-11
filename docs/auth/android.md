@@ -37,3 +37,26 @@ public class MainApplication extends Application implements ReactApplication {
   // ...
 }
 ```
+For `React-native v0.6` and `React Native Firebase 5.x.x`
+
+```java
+// ...
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.auth.RNFirebaseAuthPackage; // <-- Add this line
+
+public class MainApplication extends Application implements ReactApplication {
+    // ...
+
+    @Override
+    protected List<ReactPackage> getPackages() {
+      @SuppressWarnings("UnnecessaryLocalVariable")
+      List<ReactPackage> packages = new PackageList(this).getPackages();
+      // Packages that cannot be autolinked yet can be added manually here, for example:
+      // packages.add(new MyReactNativePackage());
+      packages.add(new RNFirebaseAuthPackage()); // <-- Add this line
+      return packages;
+    }
+  };
+  // ...
+}
+```
